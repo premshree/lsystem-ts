@@ -12,7 +12,6 @@ The `LSystem` class accepts an object as argument that needs the following:
 ## Sierpinski Arrowhead Curve
 
 ![](https://raw.githubusercontent.com/premshree/lsystem-ts/master/examples/sierpinski-arrowhead.png)
-*Sierpinski Arrowhead Curve for 10 generations*
 
 ```js
 var canvas = document.getElementById("canvas");
@@ -73,7 +72,6 @@ dragon.produce(10);
 ## Dragon Curve
 
 ![](https://raw.githubusercontent.com/premshree/lsystem-ts/master/examples/dragon.png)
-*Dragon Curve for 10 generations*
 
 ```js
 var canvas = document.getElementById("canvas");
@@ -113,7 +111,6 @@ dragon.produce(10);
 ## Fractal Plant
 
 ![](https://raw.githubusercontent.com/premshree/lsystem-ts/master/examples/fractal-plant.png)
-*Fractal Plant for 10 generations*
 
 ```js
 var canvas = document.getElementById("canvas");
