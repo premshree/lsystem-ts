@@ -17,6 +17,7 @@ interface LSystemProperties {
   functions: ProductionFunctions;
 }
 
+/* eslint import/prefer-default-export: 0 */
 class LSystem {
   axiom: Axiom;
 
@@ -38,6 +39,7 @@ class LSystem {
     return this;
   }
 
+
   getString(generations: number): string {
     const fragmentIterator = this.getStringFragment(generations);
     let it = fragmentIterator.next();
@@ -51,6 +53,7 @@ class LSystem {
     return '';
   }
 
+
   * getStringFragment(generations: number): IterableIterator<string> {
     let gens: number = generations;
     if (this.axiom === null) {
@@ -60,7 +63,7 @@ class LSystem {
     let lsys = this.axiom;
 
     while (gens > 0) {
-      lsys = Array.prototype.map.call(lsys, (char) => this.productions[char] || char).join('');
+      lsys = Array.prototype.map.call(lsys, (char: string) => this.productions[char] || char).join('');
       gens -= 1;
       yield lsys;
     }
@@ -71,7 +74,7 @@ class LSystem {
   produce(generations: number): void {
     this.generations = generations;
     const string = this.getString(generations);
-    Array.prototype.forEach.call(string, (char) => {
+    Array.prototype.forEach.call(string, (char: string) => {
       /* eslint no-unused-expressions: 0 */
       this.functions[char] && this.functions[char]();
     });

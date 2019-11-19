@@ -3,7 +3,7 @@
   <body>
     <canvas id="canvas" width="1000" height="1000"></canvas>
   </body>
-  <script src="../build/l-system.js"></script>
+  <script src="../build/l-system.browser.js"></script>
   <script>
     var canvas = document.getElementById("canvas");
     var ctx = canvas.getContext("2d");
@@ -152,7 +152,8 @@
 
     //cantor.produce(4);
     //hilbert.produce(5);
-    plant.produce(10);
+    //console.log(hilbert.getString(5));
+    plant.produce(9);
     //sierpinski.produce(5);
     //sierpinskiArrowHead.produce(8); // n=8, rotate canvas 270
     //dragon.produce(10); // OK

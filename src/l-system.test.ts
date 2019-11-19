@@ -1,6 +1,4 @@
-import util from 'util';
 import LSystem from './l-system';
-
 
 describe('LSystem', () => {
   describe('Plant Fractal', () => {
