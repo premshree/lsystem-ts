@@ -6,7 +6,7 @@ This is not feature complete. If you want a more feature rich library, you might
 
 ## Install
 
-For browser, use [`lsystem.browser.js`](https://raw.githubusercontent.com/premshree/lsystem-ts/master/build/lsystem.browser.js) from the build directory.
+For browser, use [`lsystem.browser.js`](https://raw.githubusercontent.com/premshree/lsystem-ts/master/build/l-system.browser.js) from the build directory.
 
 ## Usage
 
