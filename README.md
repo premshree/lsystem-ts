@@ -2,15 +2,56 @@
 
 A simple TypeScript implementation of an [Lindenmayer System](https://en.wikipedia.org/wiki/L-system).
 
+This is not feature complete. If you want a more feature rich library, you might want to look at [lindenmayer](https://github.com/nylki/lindenmayer).
+
+## Install
+
+For browser, use [`lsystem.browser.js`](https://raw.githubusercontent.com/premshree/lsystem-ts/master/build/lsystem.browser.js) from the build directory.
+
+## Usage
+
 The `LSystem` class accepts an object as argument that needs the following:
 
 - `axiom`: the starting string
 - `productions`: the production rules for the system
-- `functions`: a set of functions associated with each character in the system's alphabet
+- `functions`: a set of javascript production functions associated with each character in the system's alphabet
 
-# Examples
+The library is agnostic to the drawing system. In the examples listed here I am using canvas. For example, here's how you might generate a [Hilbert Curve](https://en.wikipedia.org/wiki/Hilbert_curve):
 
-## Hilbert Curve
+```js
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+
+// translate to center of canvas
+ctx.translate(canvas.width / 1.5, canvas.height / 1.5);
+ctx.rotate(Math.PI / 2);
+ctx.lineWidth = 1;
+
+var hilbert = new LSystem({
+  axiom: "A",
+  productions: {
+    A: "lBfrAfArfBl",
+    B: "rAflBfBlfAr"
+  },
+  functions: {
+    f: () => {
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.lineTo(0, canvas.width / Math.pow(2, hilbert.generations + 1));
+      ctx.stroke();
+      ctx.translate(0, canvas.width / Math.pow(2, hilbert.generations + 1));
+    },
+    l: () => ctx.rotate((Math.PI / 180) * 90),
+    r: () => ctx.rotate((Math.PI / 180) * -90)
+  }
+});
+
+hilbert.produce(6);
+```
+
+## Examples
+
+### Hilbert Curve
 
 ![](https://raw.githubusercontent.com/premshree/lsystem-ts/master/examples/hilbert.png)
 
@@ -50,7 +91,7 @@ hilbert.produce(6);
 
  </details>
 
-## Sierpinski Arrowhead Curve
+### Sierpinski Arrowhead Curve
 
 ![](https://raw.githubusercontent.com/premshree/lsystem-ts/master/examples/sierpinski-arrowhead.png)
 
@@ -116,7 +157,7 @@ sierpinskiArrowHead.produce(10);
 
 </details>
 
-## Dragon Curve
+### Dragon Curve
 
 ![](https://raw.githubusercontent.com/premshree/lsystem-ts/master/examples/dragon.png)
 
@@ -160,7 +201,7 @@ dragon.produce(10);
 
 </details>
 
-## Fractal Plant
+### Fractal Plant
 
 ![](https://raw.githubusercontent.com/premshree/lsystem-ts/master/examples/fractal-plant.png)
 
