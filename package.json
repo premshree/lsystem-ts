@@ -9,7 +9,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "keywords": [],
-  "author": "",
+  "author": "Premshree Pillai",
   "license": "ISC",
   "devDependencies": {
     "@types/jest": "^24.0.23",
